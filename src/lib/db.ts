@@ -31,6 +31,19 @@ function migrate(db: Database.Database) {
       shipped_at TEXT
     );
 
+    CREATE TABLE IF NOT EXISTS invoices (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      order_id INTEGER NOT NULL,
+      invoice_number TEXT UNIQUE NOT NULL,
+      billing_name TEXT,
+      billing_email TEXT,
+      billing_address TEXT,
+      amount_cents INTEGER NOT NULL,
+      pdf_data BLOB,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+    );
+
     CREATE TABLE IF NOT EXISTS shipping_addresses (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       order_id INTEGER NOT NULL UNIQUE,
@@ -183,6 +196,66 @@ export function updateOrderStatus(
   } else {
     db.prepare(`UPDATE orders SET status = ? WHERE id = ?`).run(status, id);
   }
+}
+
+// --- Invoices ---
+
+export interface InvoiceRecord {
+  id: number;
+  order_id: number;
+  invoice_number: string;
+  billing_name: string | null;
+  billing_email: string | null;
+  billing_address: string | null;
+  amount_cents: number;
+  pdf_data: Buffer | null;
+  created_at: string;
+}
+
+export function createInvoice(data: {
+  order_id: number;
+  invoice_number: string;
+  billing_name: string | null;
+  billing_email: string | null;
+  billing_address: string | null;
+  amount_cents: number;
+  pdf_data: Buffer;
+}): number {
+  const db = getDb();
+  const stmt = db.prepare(
+    `INSERT INTO invoices (order_id, invoice_number, billing_name, billing_email, billing_address, amount_cents, pdf_data)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  );
+  const result = stmt.run(
+    data.order_id,
+    data.invoice_number,
+    data.billing_name,
+    data.billing_email,
+    data.billing_address,
+    data.amount_cents,
+    data.pdf_data
+  );
+  return result.lastInsertRowid as number;
+}
+
+export function getNextInvoiceNumber(): string {
+  const db = getDb();
+  const year = new Date().getFullYear();
+  const row = db.prepare("SELECT invoice_number FROM invoices ORDER BY id DESC LIMIT 1").get() as { invoice_number: string } | undefined;
+  let nextNum = 1;
+  if (row) {
+    const match = row.invoice_number.match(/(\d+)$/);
+    if (match) nextNum = parseInt(match[1]) + 1;
+  }
+  return `FA-${year}-${String(nextNum).padStart(4, "0")}`;
+}
+
+export function getInvoiceByOrderSessionId(sessionId: string): InvoiceRecord | null {
+  const db = getDb();
+  const row = db.prepare(
+    `SELECT i.* FROM invoices i JOIN orders o ON o.id = i.order_id WHERE o.stripe_session_id = ?`
+  ).get(sessionId) as InvoiceRecord | undefined;
+  return row || null;
 }
 
 export function getOrderBySessionId(sessionId: string): Order | null {

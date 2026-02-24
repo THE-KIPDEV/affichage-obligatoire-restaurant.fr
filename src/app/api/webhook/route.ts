@@ -3,8 +3,11 @@ import { getStripe } from "@/lib/stripe";
 import {
   createOrder,
   createShippingAddress,
+  createInvoice,
+  getNextInvoiceNumber,
   getOrderBySessionId,
 } from "@/lib/db";
+import { generateInvoicePdf } from "@/lib/generate-invoice";
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
@@ -61,6 +64,45 @@ export async function POST(request: NextRequest) {
             country?: string;
           };
         } | null;
+
+        // Generate invoice PDF
+        try {
+          const invoiceNumber = getNextInvoiceNumber();
+          const billingAddr = session.customer_details?.address;
+          const billingName = session.customer_details?.name || "";
+          const billingEmail = session.customer_details?.email || "";
+          const addressParts = [billingAddr?.line1, billingAddr?.line2, `${billingAddr?.postal_code} ${billingAddr?.city}`].filter(Boolean);
+          const billingAddressStr = addressParts.join(", ");
+
+          const dateStr = new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" });
+          const description = isPhysical
+            ? "Pack Imprime - Affichages Obligatoires Restaurant"
+            : "Pack Numerique - Affichages Obligatoires Restaurant (PDF)";
+
+          const pdfBytes = await generateInvoicePdf({
+            invoiceNumber,
+            date: dateStr,
+            customerEmail: billingEmail,
+            customerName: billingName || billingEmail,
+            customerAddress: billingAddressStr || undefined,
+            description,
+            amountCents: session.amount_total || 0,
+            stripeSessionId: session.id,
+          });
+
+          createInvoice({
+            order_id: orderId,
+            invoice_number: invoiceNumber,
+            billing_name: billingName || null,
+            billing_email: billingEmail || null,
+            billing_address: billingAddressStr || null,
+            amount_cents: session.amount_total || 0,
+            pdf_data: Buffer.from(pdfBytes),
+          });
+          console.log(`Invoice ${invoiceNumber} created for order #${orderId}`);
+        } catch (invErr) {
+          console.error("Invoice generation error:", invErr);
+        }
 
         if (isPhysical && shipping?.address) {
           const addr = shipping.address;

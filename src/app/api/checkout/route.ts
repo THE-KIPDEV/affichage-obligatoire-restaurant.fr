@@ -31,6 +31,7 @@ export async function POST(request: NextRequest) {
 
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
+      billing_address_collection: "required",
       line_items: [
         {
           price_data: {
