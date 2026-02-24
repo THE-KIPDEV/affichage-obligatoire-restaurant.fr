@@ -26,9 +26,12 @@ export default function MentionsLegalesPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-3">Éditeur du site</h2>
             <p className="text-gray-700 leading-relaxed">
               Le site <strong>affichage-obligatoire-restaurant.fr</strong> est édité par :<br />
-              Kipdev<br />
+              <strong>KIPDEV</strong> - SAS au capital de 500 €<br />
+              Siège social : 4 Rue des Frênes, 33700 Mérignac<br />
+              SIREN : 884 120 890 — SIRET : 884 120 890 00022<br />
+              RCS Bordeaux — TVA : FR17884120890<br />
               Email : yohann@kipdev.io<br />
-              Directeur de la publication : Yohann
+              Directeur de la publication : Yohann KIPFER, Président
             </p>
           </section>
 
