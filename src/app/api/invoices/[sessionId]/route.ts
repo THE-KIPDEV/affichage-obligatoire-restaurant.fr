@@ -17,7 +17,7 @@ export async function GET(
       return NextResponse.json({ error: "Facture introuvable." }, { status: 404 });
     }
 
-    return new NextResponse(invoice.pdf_data, {
+    return new NextResponse(new Uint8Array(invoice.pdf_data), {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="facture-${invoice.invoice_number}.pdf"`,
