@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DOCUMENTS, getDocumentBySlug } from "@/lib/documents";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { CTABanner } from "@/components/CTABanner";
+import { PackPromo } from "@/components/PackPromo";
 
 export async function generateStaticParams() {
   return DOCUMENTS.map((doc) => ({ slug: doc.slug }));
@@ -83,7 +83,7 @@ export default async function AffichageDetailPage({
           <header className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-4xl" aria-hidden="true">{doc.icon}</span>
-              <span className="text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">
+              <span className="text-sm font-medium bg-brand/10 text-brand px-3 py-1 rounded-full">
                 {doc.categoryLabel}
               </span>
             </div>
@@ -113,7 +113,7 @@ export default async function AffichageDetailPage({
           </div>
 
           {/* CTA in article */}
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 md:p-8 text-center my-12">
+          <div className="bg-brand/5 border border-brand/20 rounded-xl p-6 md:p-8 text-center my-12">
             <h2 className="text-xl font-bold text-gray-900 mb-3">
               Téléchargez ce document et tous les autres
             </h2>
@@ -123,7 +123,7 @@ export default async function AffichageDetailPage({
             </p>
             <Link
               href="/pack-complet"
-              className="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
+              className="inline-block bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
             >
               Obtenir le pack complet – à partir de 9,90 €
             </Link>
@@ -140,7 +140,7 @@ export default async function AffichageDetailPage({
               <Link
                 key={d.id}
                 href={`/affichages/${d.slug}`}
-                className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-primary/30 transition-all"
+                className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-brand/30 transition-all"
               >
                 <span className="text-2xl mb-2 block" aria-hidden="true">{d.icon}</span>
                 <h3 className="font-semibold text-gray-900 text-sm mb-1">{d.shortTitle}</h3>

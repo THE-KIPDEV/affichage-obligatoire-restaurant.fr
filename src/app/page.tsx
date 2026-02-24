@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { DOCUMENTS, CATEGORIES } from "@/lib/documents";
 import { DocumentCard } from "@/components/DocumentCard";
-import { CTABanner } from "@/components/CTABanner";
+import { PackPromo } from "@/components/PackPromo";
+import { AccordionFAQ } from "@/components/AccordionFAQ";
 
 export default function HomePage() {
   const jsonLd = {
@@ -10,7 +11,7 @@ export default function HomePage() {
     name: "Affichage Obligatoire Restaurant",
     url: "https://affichage-obligatoire-restaurant.fr",
     description:
-      "Tous les documents d'affichage obligatoire pour restaurant et bar en France.",
+      "Les documents d'affichage exigés par la DGCCRF lors d'un contrôle en restaurant ou bar.",
     potentialAction: {
       "@type": "SearchAction",
       target:
@@ -19,35 +20,36 @@ export default function HomePage() {
     },
   };
 
+  const faqItems = [
+    {
+      question:
+        "Quels sont les affichages obligatoires dans un restaurant ?",
+      answer:
+        "Un restaurant doit afficher l'interdiction de fumer, la protection des mineurs contre l'alcool, l'origine des viandes bovines, les 14 allergènes alimentaires, les prix des consommations, la licence de débit de boissons, les horaires d'ouverture, les numéros d'urgence, les informations de droit du travail, l'accessibilité PMR, les règles d'hygiène, et la vidéosurveillance si elle est installée.",
+    },
+    {
+      question: "Combien coûte une amende en cas de contrôle ?",
+      answer:
+        "Ça dépend de l'affichage manquant. On va de 68 € pour l'interdiction de fumer à 7 500 € pour la protection des mineurs, et jusqu'à 45 000 € pour l'accessibilité PMR. Dans les cas les plus graves, l'administration peut ordonner la fermeture de l'établissement.",
+    },
+    {
+      question: "Est-ce que le pack couvre tout ce qu'il faut ?",
+      answer:
+        "Oui, les 14 documents du pack couvrent l'ensemble des obligations d'un restaurant ou bar : sécurité, hygiène, droit du travail, information client et réglementation. Chaque document est au format PDF A4, il suffit de l'imprimer et de l'afficher.",
+    },
+  ];
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Quels sont les affichages obligatoires dans un restaurant ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Un restaurant doit afficher : l'interdiction de fumer, la protection des mineurs (vente d'alcool), l'origine des viandes bovines, les allergènes alimentaires, les prix des consommations, la licence de débit de boissons, les horaires d'ouverture, les numéros d'urgence, les informations de droit du travail, l'accessibilité PMR, les règles d'hygiène HACCP, et la vidéosurveillance le cas échéant.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
       },
-      {
-        "@type": "Question",
-        name: "Quelles sont les sanctions en cas de non-affichage ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Les sanctions varient selon l'affichage manquant : de 68 € pour l'interdiction de fumer à 7 500 € pour la protection des mineurs, et jusqu'à 45 000 € pour l'accessibilité PMR. La fermeture administrative est possible pour les manquements les plus graves.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Où trouver les documents d'affichage obligatoire pour un restaurant ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Vous pouvez télécharger tous les documents d'affichage obligatoire sur notre site. Nous proposons un pack complet de 14 documents conformes à la réglementation française, prêts à imprimer en format PDF.",
-        },
-      },
-    ],
+    })),
   };
 
   return (
@@ -62,35 +64,37 @@ export default function HomePage() {
       />
 
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary to-primary-dark text-white py-16 md:py-24 px-4">
+        {/* Hero */}
+        <section className="bg-gradient-to-br from-brand to-brand-deep text-white py-16 md:py-24 px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
-              Tous les affichages obligatoires
+              Les 14 affichages que la DGCCRF
               <br />
-              <span className="text-accent">pour votre restaurant ou bar</span>
+              <span className="text-highlight">
+                vérifie en premier lors d&apos;un contrôle
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Documents conformes à la réglementation française, prêts à imprimer.
-              Interdiction de fumer, allergènes, licence, prix, hygiène, protection des mineurs…
-              <strong> {DOCUMENTS.length} documents essentiels</strong> en un seul pack.
+              Vous ouvrez un restaurant ou passez bientôt un contrôle ?
+              Voici les documents que l&apos;inspecteur vous demandera
+              &mdash; au bon format, avec les bonnes mentions légales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/pack-complet"
-                className="bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
+                className="bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-lg text-lg transition-colors shadow-lg"
               >
-                Obtenir le pack – à partir de 9,90 €
+                Obtenir le pack &mdash; à partir de 9,90&nbsp;€
               </Link>
               <Link
                 href="/affichages"
-                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors border border-white/20"
+                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors border border-white/20"
               >
-                Voir tous les affichages
+                Voir tous les documents
               </Link>
             </div>
             <p className="mt-6 text-sm text-blue-200">
-              Paiement sécurisé par Stripe · Téléchargement immédiat · Format PDF imprimable
+              PDF prêt en 2 minutes. Vous imprimez, vous affichez, c&apos;est réglé.
             </p>
           </div>
         </section>
@@ -99,44 +103,34 @@ export default function HomePage() {
         <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-4">
-              Pourquoi les affichages obligatoires sont essentiels ?
+              68&nbsp;€ à 45&nbsp;000&nbsp;€ d&apos;amende : ce que risque un restaurant non conforme
             </h2>
             <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-              En France, tout restaurant ou bar doit respecter de nombreuses obligations
-              d&apos;affichage. Le non-respect de ces règles expose l&apos;exploitant à des
-              amendes pouvant aller de <strong>68 € à 45 000 €</strong> et à une
-              fermeture administrative.
+              La DGCCRF, l&apos;inspection du travail et les services vétérinaires
+              contrôlent régulièrement les restaurants. Un affichage manquant,
+              c&apos;est un PV quasi automatique.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl" aria-hidden="true">⚠️</span>
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">Évitez les amendes</h3>
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="font-bold text-gray-900 mb-2">Contrôles fréquents</h3>
                 <p className="text-sm text-gray-600">
-                  Les contrôles de la DGCCRF et de l&apos;inspection du travail sont fréquents
-                  dans la restauration. Soyez en conformité.
+                  La DGCCRF et l&apos;inspection du travail ciblent les restaurants.
+                  Un contrôle sans affichage, c&apos;est une amende directe.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl" aria-hidden="true">✅</span>
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">Documents conformes</h3>
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="font-bold text-gray-900 mb-2">À jour de la réglementation</h3>
                 <p className="text-sm text-gray-600">
-                  Nos documents respectent les textes de loi en vigueur et contiennent toutes
-                  les mentions obligatoires.
+                  Chaque document est rédigé d&apos;après le texte de loi en vigueur,
+                  avec les mentions exactes exigées.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl" aria-hidden="true">🖨️</span>
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">Prêts à imprimer</h3>
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="font-bold text-gray-900 mb-2">Imprimez en 2 minutes</h3>
                 <p className="text-sm text-gray-600">
-                  Format PDF A4, téléchargement immédiat après paiement. Imprimez et affichez
-                  en quelques minutes.
+                  Téléchargez le PDF, lancez l&apos;impression sur du A4.
+                  C&apos;est aussi simple que ça.
                 </p>
               </div>
             </div>
@@ -147,11 +141,11 @@ export default function HomePage() {
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-4">
-              Les {DOCUMENTS.length} affichages obligatoires pour votre établissement
+              Les {DOCUMENTS.length} affichages que tout restaurateur doit avoir
             </h2>
             <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-              Découvrez en détail chaque affichage obligatoire : réglementation applicable,
-              contenu requis, emplacement et sanctions en cas de non-respect.
+              Cliquez sur un document pour voir la réglementation en détail,
+              les sanctions encourues et le contenu attendu par les inspecteurs.
             </p>
 
             {CATEGORIES.map((category) => {
@@ -171,71 +165,61 @@ export default function HomePage() {
                 </div>
               );
             })}
+
+            {/* Cross-links */}
+            <div className="bg-blue-50 rounded-lg p-6 mt-8">
+              <h3 className="font-bold text-gray-900 mb-3">
+                Vous cherchez d&apos;autres documents obligatoires ?
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                En plus de ces affichages, un restaurateur doit aussi tenir à jour
+                son{" "}
+                <a
+                  href="https://tableau-allergenes.fr"
+                  className="text-brand font-medium underline"
+                >
+                  tableau des allergènes
+                </a>{" "}
+                avec la liste de ses plats, ses{" "}
+                <a
+                  href="https://fiche-haccp.fr"
+                  className="text-brand font-medium underline"
+                >
+                  fiches de contrôle HACCP
+                </a>{" "}
+                (températures, nettoyage, traçabilité), et depuis février 2025,
+                l&apos;
+                <a
+                  href="https://origine-viande.fr"
+                  className="text-brand font-medium underline"
+                >
+                  affichage de l&apos;origine des viandes
+                </a>{" "}
+                pour chaque viande servie. Autant de documents que les inspecteurs
+                sont en droit de vous réclamer.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* CTA */}
-        <CTABanner />
+        <PackPromo />
 
-        {/* FAQ Preview */}
+        {/* FAQ */}
         <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
-              Questions fréquentes
+              Ce que les restaurateurs nous demandent le plus souvent
             </h2>
 
-            <div className="space-y-6">
-              <details className="bg-white rounded-xl border border-gray-200 p-6 group" open>
-                <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-                  Quels sont les affichages obligatoires dans un restaurant ?
-                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <p className="mt-4 text-gray-600 leading-relaxed">
-                  Un restaurant doit afficher obligatoirement : l&apos;interdiction de fumer,
-                  la protection des mineurs (vente d&apos;alcool), l&apos;origine des viandes
-                  bovines, les 14 allergènes alimentaires, les prix des consommations,
-                  la licence de débit de boissons, les horaires d&apos;ouverture, les
-                  numéros d&apos;urgence, les informations de droit du travail (inspection du
-                  travail, médecine du travail, convention collective), l&apos;accessibilité
-                  PMR, les règles d&apos;hygiène, et l&apos;information sur la
-                  vidéosurveillance le cas échéant.
-                </p>
-              </details>
-
-              <details className="bg-white rounded-xl border border-gray-200 p-6 group">
-                <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-                  Quelles sanctions en cas de non-affichage ?
-                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <p className="mt-4 text-gray-600 leading-relaxed">
-                  Les sanctions varient selon l&apos;obligation concernée : de 68 € d&apos;amende
-                  pour l&apos;interdiction de fumer jusqu&apos;à 7 500 € pour la vente
-                  d&apos;alcool aux mineurs, et jusqu&apos;à 45 000 € pour la non-conformité
-                  en matière d&apos;accessibilité PMR. La fermeture administrative est possible
-                  pour les manquements les plus graves.
-                </p>
-              </details>
-
-              <details className="bg-white rounded-xl border border-gray-200 p-6 group">
-                <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-                  Le pack contient-il tous les documents nécessaires ?
-                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <p className="mt-4 text-gray-600 leading-relaxed">
-                  Oui, notre pack complet contient les {DOCUMENTS.length} documents d&apos;affichage
-                  obligatoire couvrant toutes les obligations légales d&apos;un restaurant
-                  ou bar : sécurité, hygiène, droit du travail, information client et
-                  réglementation. Chaque document est au format PDF A4, prêt à imprimer.
-                </p>
-              </details>
-            </div>
+            <AccordionFAQ items={faqItems} />
 
             <div className="text-center mt-8">
               <Link
                 href="/faq"
-                className="text-primary hover:text-primary-light font-semibold transition-colors"
+                className="text-brand hover:text-brand-light font-semibold transition-colors"
               >
-                Voir toutes les questions fréquentes →
+                Toutes les questions et réponses →
               </Link>
             </div>
           </div>

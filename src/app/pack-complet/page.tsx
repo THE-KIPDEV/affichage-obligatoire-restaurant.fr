@@ -67,7 +67,7 @@ export default function PackCompletPage() {
             {/* Digital offer */}
             <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-lg flex flex-col">
               <div className="text-center mb-6">
-                <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                <span className="text-sm font-medium text-brand bg-brand/10 px-3 py-1 rounded-full">
                   Pack Numérique
                 </span>
                 <div className="mt-4">
@@ -117,15 +117,15 @@ export default function PackCompletPage() {
             </div>
 
             {/* Physical offer */}
-            <div className="bg-white border-2 border-primary rounded-2xl p-8 shadow-xl flex flex-col relative">
+            <div className="bg-white border-2 border-brand rounded-2xl p-8 shadow-xl flex flex-col relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-primary text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                <span className="bg-brand text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
                   Recommandé
                 </span>
               </div>
 
               <div className="text-center mb-6">
-                <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                <span className="text-sm font-medium text-brand bg-brand/10 px-3 py-1 rounded-full">
                   Pack Imprimé
                 </span>
                 <div className="mt-4">
@@ -209,19 +209,19 @@ export default function PackCompletPage() {
               <h3 className="font-bold text-gray-900 mb-3">Pourquoi choisir nos documents ?</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">&#10003;</span>
+                  <span className="text-brand font-bold">&#10003;</span>
                   Documents officiels conformes à la réglementation en vigueur
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">&#10003;</span>
+                  <span className="text-brand font-bold">&#10003;</span>
                   Mis à jour régulièrement selon les évolutions législatives
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">&#10003;</span>
+                  <span className="text-brand font-bold">&#10003;</span>
                   Paiement 100% sécurisé par Stripe (CB, Visa, Mastercard)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">&#10003;</span>
+                  <span className="text-brand font-bold">&#10003;</span>
                   Soyez en conformité en quelques minutes
                 </li>
               </ul>

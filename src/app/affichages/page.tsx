@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DOCUMENTS, CATEGORIES } from "@/lib/documents";
 import { DocumentCard } from "@/components/DocumentCard";
-import { CTABanner } from "@/components/CTABanner";
+import { PackPromo } from "@/components/PackPromo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ export default function AffichagesPage() {
           );
         })}
 
-        <CTABanner />
+        <PackPromo />
       </div>
     </main>
   );

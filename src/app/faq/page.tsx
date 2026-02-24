@@ -87,11 +87,11 @@ export default function FAQPage() {
 
           <header className="mb-10">
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Questions fréquentes
+              Ce que les restaurateurs nous demandent
             </h1>
             <p className="text-lg text-gray-600">
-              Retrouvez les réponses aux questions les plus courantes sur les affichages
-              obligatoires en restaurant et bar.
+              Vous avez un doute sur une obligation d&apos;affichage ?
+              Voici les réponses aux questions les plus courantes.
             </p>
           </header>
 
@@ -115,17 +115,25 @@ export default function FAQPage() {
             ))}
           </div>
 
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-8 text-center mt-12">
+          <div className="bg-brand/5 border border-brand/20 rounded-xl p-8 text-center mt-12">
             <h2 className="text-xl font-bold text-gray-900 mb-3">
-              Besoin de vos affichages obligatoires ?
+              Prêt à vous mettre en conformité ?
             </h2>
-            <p className="text-gray-600 mb-6">
-              Téléchargez immédiatement le pack complet de {DOCUMENTS.length} documents
-              conformes, prêts à imprimer.
+            <p className="text-gray-600 mb-4">
+              Le pack complet contient les {DOCUMENTS.length} documents obligatoires en PDF.
+              Vous imprimez, vous affichez, c&apos;est fait.
+            </p>
+            <p className="text-sm text-gray-500 mb-6">
+              En complément, pensez aussi à préparer votre{" "}
+              <a href="https://tableau-allergenes.fr" className="text-brand underline">tableau des allergènes</a>,
+              vos{" "}
+              <a href="https://fiche-haccp.fr" className="text-brand underline">fiches HACCP</a> et
+              votre{" "}
+              <a href="https://origine-viande.fr" className="text-brand underline">affichage origine des viandes</a>.
             </p>
             <Link
               href="/pack-complet"
-              className="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
+              className="inline-block bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
             >
               Obtenir le pack complet – à partir de 9,90 €
             </Link>

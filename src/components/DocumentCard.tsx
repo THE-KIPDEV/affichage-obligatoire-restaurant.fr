@@ -3,7 +3,7 @@ import type { DocumentInfo } from "@/lib/documents";
 
 export function DocumentCard({ doc }: { doc: DocumentInfo }) {
   return (
-    <article className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-200 flex flex-col">
+    <article className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-brand/30 transition-all duration-200 flex flex-col">
       <div className="flex items-start gap-3 mb-3">
         <span className="text-3xl" aria-hidden="true">{doc.icon}</span>
         <div className="flex-1">
@@ -16,7 +16,7 @@ export function DocumentCard({ doc }: { doc: DocumentInfo }) {
       <p className="text-sm text-gray-600 leading-relaxed flex-1 mb-4">{doc.description}</p>
       <Link
         href={`/affichages/${doc.slug}`}
-        className="text-primary hover:text-primary-light font-semibold text-sm inline-flex items-center gap-1 transition-colors"
+        className="text-brand hover:text-brand-light font-semibold text-sm inline-flex items-center gap-1 transition-colors"
       >
         En savoir plus
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-dmsans",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Affichage Obligatoire Restaurant",
   },
   description:
-    "Tous les documents d'affichage obligatoire pour restaurant et bar en France. Interdiction de fumer, allergènes, licence, prix, hygiène. Téléchargement immédiat.",
+    "Les 14 documents d'affichage obligatoire pour restaurant et bar en France. Interdiction de fumer, allergènes, licence, prix, hygiène. PDF prêt en 2 minutes.",
   keywords: [
     "affichage obligatoire restaurant",
     "affichage obligatoire bar",
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     title:
       "Affichage Obligatoire Restaurant & Bar – Documents Officiels",
     description:
-      "Téléchargez tous les affichages obligatoires pour votre restaurant ou bar. Documents conformes, prêts à imprimer.",
+      "Les documents exigés par la DGCCRF lors d'un contrôle en restaurant ou bar. PDF conformes, prêts à imprimer.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Affichage Obligatoire Restaurant & Bar",
     description:
-      "Tous les documents d'affichage obligatoire pour restaurant et bar. Téléchargement immédiat.",
+      "Les 14 documents d'affichage obligatoire pour restaurant et bar. PDF prêt en 2 minutes.",
   },
   alternates: {
     canonical: "/",
@@ -72,10 +72,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <Header />
+      <body className={`${dmSans.variable} font-sans antialiased`}>
+        <SiteNav />
         {children}
-        <Footer />
+        <SiteFooter />
       </body>
     </html>
   );
