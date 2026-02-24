@@ -127,7 +127,7 @@ export default function FAQPage() {
               href="/pack-complet"
               className="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
             >
-              Obtenir le pack complet – 14,90 €
+              Obtenir le pack complet – à partir de 9,90 €
             </Link>
           </div>
         </div>

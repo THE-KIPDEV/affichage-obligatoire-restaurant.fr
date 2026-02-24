@@ -30,10 +30,10 @@ export default function PaymentSuccessPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mt-8">
           <h2 className="font-bold text-amber-800 mb-2">Conseils d&apos;impression</h2>
           <ul className="text-sm text-amber-700 space-y-1">
-            <li>• Imprimez en format A4 pour un affichage conforme</li>
-            <li>• Utilisez un papier de grammage 120g minimum pour une meilleure durabilité</li>
-            <li>• Plastifiez les documents exposés à l&apos;humidité (cuisine, extérieur)</li>
-            <li>• Complétez les champs à remplir (horaires, adresse, etc.) avant d&apos;afficher</li>
+            <li>- Imprimez en format A4 pour un affichage conforme</li>
+            <li>- Utilisez un papier de grammage 120g minimum pour une meilleure durabilité</li>
+            <li>- Plastifiez les documents exposés à l&apos;humidité (cuisine, extérieur)</li>
+            <li>- Complétez les champs à remplir (horaires, adresse, etc.) avant d&apos;afficher</li>
           </ul>
         </div>
       </div>

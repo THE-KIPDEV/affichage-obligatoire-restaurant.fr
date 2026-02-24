@@ -80,7 +80,7 @@ export default function HomePage() {
                 href="/pack-complet"
                 className="bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
               >
-                Télécharger le pack complet – 14,90 €
+                Obtenir le pack – à partir de 9,90 €
               </Link>
               <Link
                 href="/affichages"

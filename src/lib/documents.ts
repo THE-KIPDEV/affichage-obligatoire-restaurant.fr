@@ -18,11 +18,6 @@ export interface DocumentInfo {
       text: string;
     }>;
   };
-  pdfTitle: string;
-  pdfSections: Array<{
-    heading?: string;
-    lines: string[];
-  }>;
 }
 
 export const DOCUMENTS: DocumentInfo[] = [
@@ -67,25 +62,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "INTERDICTION DE FUMER",
-    pdfSections: [
-      {
-        lines: [
-          "Il est interdit de fumer dans l'ensemble",
-          "de cet établissement",
-        ],
-      },
-      {
-        heading: "Rappel réglementaire",
-        lines: [
-          "Décret n°2006-1386 du 15 novembre 2006",
-          "Article R3512-2 du Code de la santé publique",
-          "",
-          "Amende forfaitaire : 68 € pour le contrevenant",
-          "Amende pour l'exploitant : 135 € en cas de non-respect",
-        ],
-      },
-    ],
   },
   {
     id: "protection-mineurs",
@@ -128,31 +104,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "PROTECTION DES MINEURS",
-    pdfSections: [
-      {
-        lines: [
-          "LA VENTE D'ALCOOL À DES MINEURS",
-          "DE MOINS DE 18 ANS EST INTERDITE",
-        ],
-      },
-      {
-        heading: "Article L3342-1 du Code de la santé publique",
-        lines: [
-          "La vente de boissons alcoolisées à des mineurs",
-          "de moins de dix-huit ans est interdite.",
-          "",
-          "Une pièce d'identité pourra être exigée.",
-        ],
-      },
-      {
-        heading: "Sanctions",
-        lines: [
-          "Amende de 7 500 € (Article L3353-3 du CSP)",
-          "Récidive : 15 000 € d'amende et 1 an de prison",
-        ],
-      },
-    ],
   },
   {
     id: "origine-viandes",
@@ -197,27 +148,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "ORIGINE DES VIANDES BOVINES",
-    pdfSections: [
-      {
-        heading: "Information du consommateur",
-        lines: [
-          "Conformément au décret n°2002-1465 du 17 décembre 2002,",
-          "nous vous informons de l'origine des viandes bovines",
-          "servies dans notre établissement :",
-        ],
-      },
-      {
-        heading: "Nos viandes bovines",
-        lines: [
-          "Pays de naissance : ................................",
-          "Pays d'élevage : ................................",
-          "Pays d'abattage : ................................",
-          "",
-          "(À compléter par l'établissement)",
-        ],
-      },
-    ],
   },
   {
     id: "allergenes",
@@ -262,42 +192,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "INFORMATION SUR LES ALLERGÈNES",
-    pdfSections: [
-      {
-        lines: [
-          "Conformément au règlement UE n°1169/2011,",
-          "nous vous informons de la présence des allergènes",
-          "suivants dans nos préparations :",
-        ],
-      },
-      {
-        heading: "Les 14 allergènes majeurs",
-        lines: [
-          "1. Gluten (blé, seigle, orge, avoine, épeautre)",
-          "2. Crustacés",
-          "3. Œufs",
-          "4. Poissons",
-          "5. Arachides",
-          "6. Soja",
-          "7. Lait et produits laitiers (lactose)",
-          "8. Fruits à coque (amandes, noisettes, noix...)",
-          "9. Céleri",
-          "10. Moutarde",
-          "11. Graines de sésame",
-          "12. Sulfites (SO₂ > 10 mg/kg)",
-          "13. Lupin",
-          "14. Mollusques",
-        ],
-      },
-      {
-        lines: [
-          "",
-          "Pour toute question sur la composition de nos plats,",
-          "veuillez vous adresser à notre personnel.",
-        ],
-      },
-    ],
   },
   {
     id: "affichage-prix",
@@ -342,27 +236,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "AFFICHAGE DES PRIX",
-    pdfSections: [
-      {
-        heading: "Tarif des consommations",
-        lines: [
-          "Conformément à l'arrêté du 27 mars 1987",
-          "",
-          "                          Comptoir    Salle",
-          "Café expresso            ......€    ......€",
-          "Demi pression            ......€    ......€",
-          "Jus de fruit             ......€    ......€",
-          "Soda / Cola              ......€    ......€",
-          "Eau minérale             ......€    ......€",
-          "",
-          "(À compléter par l'établissement)",
-        ],
-      },
-      {
-        lines: ["", "Prix TTC – Service compris"],
-      },
-    ],
   },
   {
     id: "licence-debit-boissons",
@@ -407,32 +280,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "LICENCE DE DÉBIT DE BOISSONS",
-    pdfSections: [
-      {
-        heading: "Établissement titulaire de la licence",
-        lines: [
-          "Nom de l'établissement : ................................",
-          "Adresse : ................................",
-          "",
-          "Type de licence : □ Licence III  □ Licence IV",
-          "                  □ Petite licence restaurant",
-          "                  □ Licence restaurant",
-        ],
-      },
-      {
-        heading: "Catégories de boissons autorisées",
-        lines: [
-          "Groupe 1 : Boissons sans alcool",
-          "Groupe 2 : Boissons fermentées non distillées",
-          "Groupe 3 : Vins doux, apéritifs à base de vin",
-          "Groupe 4 : Rhums, tafias, alcools de fruits",
-          "Groupe 5 : Tous les autres alcools",
-          "",
-          "N° de licence : ................................",
-        ],
-      },
-    ],
   },
   {
     id: "horaires-ouverture",
@@ -473,27 +320,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "HORAIRES D'OUVERTURE",
-    pdfSections: [
-      {
-        heading: "Horaires de l'établissement",
-        lines: [
-          "Lundi :      de ......h...... à ......h......",
-          "Mardi :      de ......h...... à ......h......",
-          "Mercredi :   de ......h...... à ......h......",
-          "Jeudi :      de ......h...... à ......h......",
-          "Vendredi :   de ......h...... à ......h......",
-          "Samedi :     de ......h...... à ......h......",
-          "Dimanche :   de ......h...... à ......h......",
-        ],
-      },
-      {
-        heading: "Jour(s) de fermeture hebdomadaire",
-        lines: [
-          "................................................................",
-        ],
-      },
-    ],
   },
   {
     id: "numeros-urgence",
@@ -534,35 +360,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "NUMÉROS D'URGENCE",
-    pdfSections: [
-      {
-        heading: "En cas d'urgence, appelez :",
-        lines: [
-          "",
-          "SAMU (urgences médicales) ............... 15",
-          "",
-          "POMPIERS (incendie / secours) ........... 18",
-          "",
-          "POLICE / GENDARMERIE .................... 17",
-          "",
-          "NUMÉRO D'URGENCE EUROPÉEN .............. 112",
-          "",
-          "URGENCE SMS (sourds/malentendants) ...... 114",
-          "",
-          "CENTRE ANTIPOISON ...................... .........",
-        ],
-      },
-      {
-        heading: "Adresse de l'établissement",
-        lines: [
-          "................................................................",
-          "................................................................",
-          "",
-          "(À communiquer aux services de secours)",
-        ],
-      },
-    ],
   },
   {
     id: "droit-travail",
@@ -607,36 +404,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "AFFICHAGE DROIT DU TRAVAIL",
-    pdfSections: [
-      {
-        heading: "Inspection du travail",
-        lines: [
-          "Nom de l'inspecteur : ................................",
-          "Adresse : ................................",
-          "Téléphone : ................................",
-        ],
-      },
-      {
-        heading: "Médecine du travail",
-        lines: [
-          "Service : ................................",
-          "Adresse : ................................",
-          "Téléphone : ................................",
-        ],
-      },
-      {
-        heading: "Convention collective applicable",
-        lines: [
-          "Convention Collective Nationale des",
-          "Hôtels, Cafés, Restaurants (HCR)",
-          "IDCC 1979 – Brochure JO n°3292",
-          "",
-          "Un exemplaire est consultable",
-          "auprès de la direction.",
-        ],
-      },
-    ],
   },
   {
     id: "accessibilite",
@@ -677,29 +444,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "ACCESSIBILITÉ DE L'ÉTABLISSEMENT",
-    pdfSections: [
-      {
-        lines: [
-          "Cet établissement est accessible",
-          "aux personnes en situation de handicap.",
-        ],
-      },
-      {
-        heading: "Informations",
-        lines: [
-          "Conformément à la loi du 11 février 2005,",
-          "notre établissement s'engage à accueillir",
-          "toute personne en situation de handicap.",
-          "",
-          "Le registre public d'accessibilité",
-          "est disponible sur simple demande à l'accueil.",
-          "",
-          "Pour toute difficulté d'accès, merci de",
-          "vous adresser à notre personnel.",
-        ],
-      },
-    ],
   },
   {
     id: "hygiene-haccp",
@@ -744,39 +488,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "RÈGLES D'HYGIÈNE",
-    pdfSections: [
-      {
-        heading: "Protocole de lavage des mains",
-        lines: [
-          "1. Mouiller les mains à l'eau tiède",
-          "2. Appliquer du savon bactéricide",
-          "3. Frotter pendant 30 secondes minimum",
-          "   (paumes, dos, entre les doigts, ongles)",
-          "4. Rincer abondamment",
-          "5. Sécher avec un essuie-mains à usage unique",
-        ],
-      },
-      {
-        heading: "Quand se laver les mains ?",
-        lines: [
-          "• En arrivant au travail",
-          "• Après être allé aux toilettes",
-          "• Après avoir touché des aliments crus",
-          "• Après s'être mouché ou avoir toussé",
-          "• Après avoir manipulé des déchets",
-          "• Entre chaque changement de tâche",
-        ],
-      },
-      {
-        heading: "Températures de conservation",
-        lines: [
-          "Produits frais : 0°C à +4°C",
-          "Produits laitiers : +4°C à +8°C",
-          "Produits surgelés : -18°C minimum",
-        ],
-      },
-    ],
   },
   {
     id: "videosurveillance",
@@ -817,36 +528,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "ÉTABLISSEMENT SOUS VIDÉOSURVEILLANCE",
-    pdfSections: [
-      {
-        lines: [
-          "Cet établissement est placé sous",
-          "vidéosurveillance pour la sécurité",
-          "des biens et des personnes.",
-        ],
-      },
-      {
-        heading: "Informations RGPD",
-        lines: [
-          "Responsable du traitement :",
-          "................................................................",
-          "",
-          "Durée de conservation : 30 jours maximum",
-          "",
-          "Vos droits : Vous disposez d'un droit d'accès",
-          "aux images vous concernant.",
-          "",
-          "Contact / Exercice des droits :",
-          "................................................................",
-          "",
-          "Réclamation : www.cnil.fr",
-          "",
-          "Base légale : Article L252-2 du CSI",
-          "Autorisation préfectorale n° .............",
-        ],
-      },
-    ],
   },
   {
     id: "ethylotest",
@@ -887,32 +568,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "ÉTHYLOTESTS À DISPOSITION",
-    pdfSections: [
-      {
-        lines: [
-          "Des éthylotests sont mis à votre disposition",
-          "dans cet établissement.",
-          "",
-          "Demandez-les au comptoir.",
-        ],
-      },
-      {
-        heading: "Rappel des limites légales",
-        lines: [
-          "Taux d'alcoolémie maximal autorisé :",
-          "",
-          "Conducteur : 0,5 g/l de sang",
-          "             (0,25 mg/l d'air expiré)",
-          "",
-          "Jeune conducteur (permis probatoire) :",
-          "             0,2 g/l de sang",
-          "             (0,10 mg/l d'air expiré)",
-          "",
-          "Ne prenez pas le volant en cas de doute.",
-        ],
-      },
-    ],
   },
   {
     id: "gaspillage-alimentaire",
@@ -953,33 +608,6 @@ export const DOCUMENTS: DocumentInfo[] = [
         },
       ],
     },
-    pdfTitle: "LUTTE CONTRE LE GASPILLAGE ALIMENTAIRE",
-    pdfSections: [
-      {
-        lines: [
-          "Vous n'avez pas terminé votre repas ?",
-          "",
-          "Nous vous proposons un contenant",
-          "pour emporter vos restes !",
-        ],
-      },
-      {
-        heading: "Le saviez-vous ?",
-        lines: [
-          "En France, 10 millions de tonnes de nourriture",
-          "sont gaspillées chaque année.",
-          "",
-          "En emportant vos restes, vous participez",
-          "à la lutte contre le gaspillage alimentaire.",
-          "",
-          "N'hésitez pas à demander un contenant",
-          "à notre personnel !",
-          "",
-          "Loi AGEC du 10 février 2020",
-          "Article L541-15-6 du Code de l'environnement",
-        ],
-      },
-    ],
   },
 ];
 

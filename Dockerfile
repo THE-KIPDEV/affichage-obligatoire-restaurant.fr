@@ -27,6 +27,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Create data directory for SQLite + PDF storage (mount as volume in production)
+RUN mkdir -p /app/data/documents && chown -R nextjs:nodejs /app/data
+
 USER nextjs
 
 EXPOSE 3000

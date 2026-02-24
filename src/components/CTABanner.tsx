@@ -9,13 +9,13 @@ export function CTABanner() {
         </h2>
         <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
           Pack complet de {14} documents conformes à la réglementation, prêts à imprimer
-          pour votre restaurant ou bar. Seulement <strong>14,90 €</strong>.
+          pour votre restaurant ou bar. À partir de <strong>9,90 €</strong>.
         </p>
         <Link
           href="/pack-complet"
           className="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
         >
-          Obtenir le pack complet – 14,90 €
+          Obtenir le pack complet – à partir de 9,90 €
         </Link>
         <p className="mt-4 text-sm text-blue-200">
           Paiement sécurisé par Stripe · Téléchargement immédiat · Documents PDF
