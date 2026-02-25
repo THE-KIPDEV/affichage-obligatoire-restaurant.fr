@@ -73,13 +73,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <head>
-        <Script defer src="https://kipstats.com/tracker.js" data-site="kp_5a41928a" />
-      </head>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         <SiteNav />
         {children}
         <SiteFooter />
+        <Script src="https://kipstats.com/tracker.js" data-site="kp_5a41928a" strategy="beforeInteractive" />
       </body>
     </html>
   );
