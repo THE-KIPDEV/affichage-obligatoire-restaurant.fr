@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -72,6 +73,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <Script defer src="https://kipstats.com/tracker.js" data-site="kp_5a41928a" />
+      </head>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         <SiteNav />
         {children}
