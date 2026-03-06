@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedCta } from "@/components/TrackedCta";
 
 export function CTABanner() {
   return (
@@ -11,12 +11,13 @@ export function CTABanner() {
           Pack complet de {14} documents conformes à la réglementation, prêts à imprimer
           pour votre restaurant ou bar. À partir de <strong>9,90 €</strong>.
         </p>
-        <Link
+        <TrackedCta
           href="/pack-complet"
+          cta="cta_banner"
           className="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
         >
           Obtenir le pack complet – à partir de 9,90 €
-        </Link>
+        </TrackedCta>
         <p className="mt-4 text-sm text-blue-200">
           Paiement sécurisé par Stripe · Téléchargement immédiat · Documents PDF
         </p>

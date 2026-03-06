@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { DOCUMENTS, getDocumentBySlug } from "@/lib/documents";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { PackPromo } from "@/components/PackPromo";
+import { TrackedCta } from "@/components/TrackedCta";
 
 export async function generateStaticParams() {
   return DOCUMENTS.map((doc) => ({ slug: doc.slug }));
@@ -121,12 +122,13 @@ export default async function AffichageDetailPage({
               Obtenez le pack complet de {DOCUMENTS.length} affichages obligatoires
               au format PDF, prêts à imprimer pour votre établissement.
             </p>
-            <Link
+            <TrackedCta
               href="/pack-complet"
+              cta="article_inline"
               className="inline-block bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg"
             >
               Obtenir le pack complet – à partir de 9,90 €
-            </Link>
+            </TrackedCta>
           </div>
         </article>
 

@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ConversionWidgets } from "@/components/ConversionWidgets";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
         <SiteNav />
         {children}
         <SiteFooter />
+        <ConversionWidgets />
         <Script src="https://kipstats.com/tracker.js" data-site="kp_5a41928a" strategy="beforeInteractive" />
       </body>
     </html>

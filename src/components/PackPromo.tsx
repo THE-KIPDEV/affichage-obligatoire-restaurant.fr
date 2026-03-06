@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedCta } from "@/components/TrackedCta";
 
 export function PackPromo() {
   return (
@@ -11,12 +11,13 @@ export function PackPromo() {
           Le pack regroupe les 14 documents obligatoires en PDF, prêts à imprimer.
           À partir de 9,90&nbsp;€.
         </p>
-        <Link
+        <TrackedCta
           href="/pack-complet"
+          cta="pack_promo"
           className="inline-block bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl"
         >
           Voir le pack complet
-        </Link>
+        </TrackedCta>
         <p className="mt-3 text-sm text-blue-200">
           Paiement par carte · Livraison par email dans la minute
         </p>

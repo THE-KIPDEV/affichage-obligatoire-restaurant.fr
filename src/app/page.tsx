@@ -3,6 +3,7 @@ import { DOCUMENTS, CATEGORIES } from "@/lib/documents";
 import { DocumentCard } from "@/components/DocumentCard";
 import { PackPromo } from "@/components/PackPromo";
 import { AccordionFAQ } from "@/components/AccordionFAQ";
+import { TrackedCta } from "@/components/TrackedCta";
 
 export default function HomePage() {
   const jsonLd = {
@@ -80,18 +81,20 @@ export default function HomePage() {
               &mdash; au bon format, avec les bonnes mentions légales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <TrackedCta
                 href="/pack-complet"
+                cta="hero"
                 className="bg-highlight hover:bg-highlight-dark text-gray-900 font-bold px-8 py-4 rounded-lg text-lg transition-colors shadow-lg"
               >
                 Obtenir le pack &mdash; à partir de 9,90&nbsp;€
-              </Link>
-              <Link
+              </TrackedCta>
+              <TrackedCta
                 href="/affichages"
+                cta="hero_secondary"
                 className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors border border-white/20"
               >
                 Voir tous les documents
-              </Link>
+              </TrackedCta>
             </div>
             <p className="mt-6 text-sm text-blue-200">
               PDF prêt en 2 minutes. Vous imprimez, vous affichez, c&apos;est réglé.

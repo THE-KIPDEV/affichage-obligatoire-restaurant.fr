@@ -22,6 +22,9 @@ export function CheckoutButton({ offerType, label }: CheckoutButtonProps) {
       const data = await response.json();
 
       if (data.url) {
+        if ((window as any).kipstats?.event) {
+          (window as any).kipstats.event("checkout_started", { offer_type: offerType });
+        }
         window.location.href = data.url;
       } else {
         alert("Une erreur est survenue. Veuillez réessayer.");
